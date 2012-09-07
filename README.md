@@ -1,4 +1,4 @@
-nspclient1111
+nspclient
 =========
 
 华为网盘SDK,用于调用华为网盘开放平台服务
@@ -34,6 +34,7 @@ npm install nspclient
 
 *3.调用服务*
 
+
 >nspclient.service(order,params,callback)
 
 >order  服务名称
@@ -42,10 +43,31 @@ npm install nspclient
 
 >callback 回调
 
-    var userInfo = ['user.uid', 'user.username', 'user.status','profile.productid'];
+
+*4.调用实例*
+
+(1)nsp.user.getInfo
+
+    var userInfo = ['user.username', 'user.uid'];
     nspclient.service('nsp.user.getInfo',{attrs:userInfo},function(data){
         console.log(data);
     });
+
+> 返回
+{"user.username":"test","user.uid":"123456"}
+
+(2)nsp.vfs.lsdir
+    var data = {
+        'path':'/',
+    	'fields':'["name","size","type", "dirCount", "fileCount", "dbank_systemType", "dbank_isShared", "modifyTime"]'	    
+    }
+    nspclient.service('nsp.vfs.lsdir',data,function(data){
+        console.log(data);
+    });
+> 返回
+{
+    "childList":[{"name":"Netdisk","dirCount":"0","fileCount":"0","modifyTime":"2012-07-19 07:08:40","type":"Directory"}]
+}
 
 
 
