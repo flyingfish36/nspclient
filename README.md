@@ -46,28 +46,25 @@ npm install nspclient
 
 *4.调用实例*
 
-(1)nsp.user.getInfo
+(1) nsp.user.getInfo
 
     var userInfo = ['user.username', 'user.uid'];
     nspclient.service('nsp.user.getInfo',{attrs:userInfo},function(data){
         console.log(data);
     });
+    返回:{"user.username":"test","user.uid":"123456"}
 
-> 返回
-{"user.username":"test","user.uid":"123456"}
+(2) nsp.vfs.lsdir
 
-(2)nsp.vfs.lsdir
     var data = {
         'path':'/',
-    	'fields':'["name","size","type", "dirCount", "fileCount", "dbank_systemType", "dbank_isShared", "modifyTime"]'	    
+        'fields':'["name","size","type", "dirCount", "fileCount", "dbank_systemType", "dbank_isShared", "modifyTime"]'	    
     }
     nspclient.service('nsp.vfs.lsdir',data,function(data){
         console.log(data);
     });
-> 返回
-{
-    "childList":[{"name":"Netdisk","dirCount":"0","fileCount":"0","modifyTime":"2012-07-19 07:08:40","type":"Directory"}]
-}
+    返回:{"childList":[{"name":"Netdisk","dirCount":"0","fileCount":"0","modifyTime":"2012-07-19 07:08:40","type":"Directory"}]}
+
 
 
 
